@@ -16,7 +16,7 @@ class FooService(val jmsTemplate: JmsTemplate) {
     }
 
     fun send(msg: HelloMessage) {
-        jmsTemplate.convertAndSend(msg)
+        jmsTemplate.convertAndSend("helloTopic", msg)
         LOGGER.info("Just send an hello message")
     }
 }

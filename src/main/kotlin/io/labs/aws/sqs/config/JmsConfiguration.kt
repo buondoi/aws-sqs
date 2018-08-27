@@ -44,7 +44,11 @@ class JmsConfiguration(val sqsConfig: SqsConfig) {
     }
 
     @Bean
-    fun jmsTemplate(): JmsTemplate = JmsTemplate(connectionFactory())
+    fun jmsTemplate(): JmsTemplate {
+        val template = JmsTemplate(connectionFactory())
+        template.messageConverter = messageConverter()
+        return template
+    }
 
     @Bean
     fun messageConverter(): MessageConverter {
