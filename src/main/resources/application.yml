@@ -1,0 +1,4 @@
+spring:
+  sqs:
+    endpoint: http://localhost:4576
+    region: us-east-1
