@@ -5,6 +5,8 @@ import com.amazon.sqs.javamessaging.SQSConnectionFactory
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain
 import com.amazonaws.client.builder.AwsClientBuilder
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.jms.annotation.EnableJms
@@ -54,7 +56,10 @@ class JmsConfiguration(val sqsConfig: SqsConfig) {
     fun messageConverter(): MessageConverter {
         val converter = MappingJackson2MessageConverter()
         converter.setTargetType(MessageType.TEXT)
-        converter.setTypeIdPropertyName("_type")
+        converter.setObjectMapper(objectMapper())
         return converter
     }
+
+    @Bean
+    fun objectMapper(): ObjectMapper = ObjectMapper().registerModule(KotlinModule())
 }

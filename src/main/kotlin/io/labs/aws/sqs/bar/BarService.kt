@@ -1,6 +1,5 @@
 package io.labs.aws.sqs.bar
 
-import io.labs.aws.sqs.message.HelloMessage
 import org.slf4j.LoggerFactory
 import org.springframework.jms.annotation.JmsListener
 import org.springframework.stereotype.Component
@@ -16,7 +15,7 @@ class BarService {
     }
 
     @JmsListener(destination = "helloTopic", containerFactory = "defaultJmsListenerContainerFactory")
-    fun onHello(msg: HelloMessage) {
-        LOGGER.info("Just receive this ${msg.msg}")
+    fun onHello(jsonMessage: String) {
+        LOGGER.info("Just receive this \"$jsonMessage\"")
     }
 }
