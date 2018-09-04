@@ -23,8 +23,9 @@ docker-compose up -d
 * [SQS at http://localhost:4576](http://localhost:4576)
 
 ## Create SQS Queue
+
 ```bash
-aws --endpoint-url=http://localhost:4576 sqs create-queue --queue-name helloTopic
+aws --endpoint-url=http://localhost:4576 sqs create-queue --queue-name helloQueue
 ```
 
 ## Reference

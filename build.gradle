@@ -58,6 +58,7 @@ dependencies {
 
     // an implementation of JMS based on AWS SQS.
     compile('com.amazonaws:amazon-sqs-java-messaging-lib:1.0.4')
+//    compile('com.amazonaws:aws-java-sdk-sqs:1.11.401')
 
     compile('org.springframework:spring-jms')
 
